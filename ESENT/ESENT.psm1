@@ -787,6 +787,10 @@ Function Get-ESEDatabaseTableRowData {
 							
 					break							
 				}
+				(16) {
+					$Buffer = [Microsoft.Isam.Esent.Interop.Api]::RetrieveColumnAsGuid($Session, $Table.JetTableid, $Column.Columnid)
+					break
+				}
 				default {
 					Write-Warning -Message "Did not match column type to $_"
 					$Buffer = [System.String]::Empty
